@@ -53,11 +53,13 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 
     <footer class="site-footer">
       <div class="container">
-        <p>© {new Date().getFullYear()} {siteName}</p>
+        <div class="site-footer-info">
+          <p>© {new Date().getFullYear()} Pavlo Havrylov</p>
+          <p>Based in Lviv, Ukraine</p>
+        </div>
         <ul role="list">
-          <li><a href="mailto:hello@example.com">Email</a></li>
-          <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
-          <li><a href="https://read.cv/">Read.cv</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Email</a></li>
         </ul>
       </div>
     </footer>
