@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+
+<Base title="Work">
+  <header class="page-header container">
+    <h1>Work</h1>
+    <p class="lede">A selection of projects from the last few years. Placeholder text describing the range of work.</p>
+  </header>
+
+  <section class="container page-body">
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Base>

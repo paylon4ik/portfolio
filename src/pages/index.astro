@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const featured = projects.filter((p) => p.featured);
+---
+
+<Base>
+  <section class="hero container">
+    <p class="eyebrow">Senior Product Designer</p>
+    <h1>I design clear, considered products for complex problems.</h1>
+    <p class="lede">
+      Placeholder intro. Ten years shaping digital products across fintech, health and B2B software —
+      from early research to shipped interface. Currently at Company Name.
+    </p>
+  </section>
+
+  <section class="section container">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <a class="text-link" href="/work">All projects →</a>
+    </div>
+    <div class="project-grid">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Base>

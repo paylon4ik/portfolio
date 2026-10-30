@@ -1,0 +1,138 @@
+---
+import Base from '../../layouts/Base.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import { projects, type Project } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      prev: projects[i - 1],
+      next: projects[i + 1],
+    },
+  }));
+}
+
+interface Props {
+  project: Project;
+  prev?: Project;
+  next?: Project;
+}
+
+const { project, prev, next } = Astro.props;
+---
+
+<Base title={project.title} description={project.summary}>
+  <article class="container">
+    <header class="case-header">
+      <p class="eyebrow">{project.client} · {project.year}</p>
+      <h1>{project.title}</h1>
+      <p class="lede">{project.summary}</p>
+    </header>
+
+    <dl class="case-facts">
+      <div><dt>Role</dt><dd>{project.role}</dd></div>
+      <div><dt>Team</dt><dd>{project.team}</dd></div>
+      <div><dt>Duration</dt><dd>{project.duration}</dd></div>
+      <div><dt>Year</dt><dd>{project.year}</dd></div>
+    </dl>
+
+    <Placeholder ratio="16 / 9" label="Hero image" />
+
+    <section class="case-section">
+      <h2>Context</h2>
+      <div class="measure">
+        <p>
+          Placeholder text. Describe the company, the product and the moment it was in. Who were the users,
+          what was happening in the business, and why did this project matter now?
+        </p>
+        <p>
+          Keep it short — two or three paragraphs is enough to set the scene for the reader.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2>Problem</h2>
+      <div class="measure">
+        <p>
+          Placeholder text. Frame the core problem in one or two sentences. What wasn't working, for whom,
+          and how did you know? Reference the signals — data, research, support tickets — that made it clear.
+        </p>
+      </div>
+    </section>
+
+    <figure class="case-figure">
+      <Placeholder ratio="16 / 9" label="Research synthesis" />
+      <figcaption>Placeholder caption describing the image.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2>Process</h2>
+      <div class="measure">
+        <p>
+          Placeholder text. Walk through the key decisions rather than every step. What did you explore,
+          what did you discard and why? Where did constraints shape the outcome?
+        </p>
+        <p>
+          Highlight collaboration with engineering, product and research, and the moments where
+          your judgement changed the direction of the work.
+        </p>
+      </div>
+    </section>
+
+    <div class="case-figure-pair">
+      <figure class="case-figure">
+        <Placeholder ratio="4 / 5" label="Exploration A" />
+        <figcaption>Early exploration.</figcaption>
+      </figure>
+      <figure class="case-figure">
+        <Placeholder ratio="4 / 5" label="Exploration B" />
+        <figcaption>Refined direction.</figcaption>
+      </figure>
+    </div>
+
+    <section class="case-section">
+      <h2>Solution</h2>
+      <div class="measure">
+        <p>
+          Placeholder text. Describe what shipped and the principles behind it. Focus on the two or three
+          ideas that made the biggest difference.
+        </p>
+      </div>
+    </section>
+
+    <figure class="case-figure">
+      <Placeholder ratio="16 / 10" label="Final design" />
+      <figcaption>Placeholder caption describing the final design.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2>Outcome</h2>
+      <div>
+        <p class="measure">Placeholder text. Summarise the impact and what you learned.</p>
+        <div class="outcomes">
+          <div><strong>+00%</strong><span>Metric placeholder</span></div>
+          <div><strong>−00%</strong><span>Metric placeholder</span></div>
+          <div><strong>0.0×</strong><span>Metric placeholder</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-nav" aria-label="More case studies">
+      {prev && (
+        <a href={`/work/${prev.slug}`}>
+          <span class="eyebrow">← Previous</span>
+          <strong>{prev.title}</strong>
+        </a>
+      )}
+      {next && (
+        <a class="next" href={`/work/${next.slug}`}>
+          <span class="eyebrow">Next →</span>
+          <strong>{next.title}</strong>
+        </a>
+      )}
+    </nav>
+  </article>
+</Base>

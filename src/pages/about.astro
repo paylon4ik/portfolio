@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Placeholder from '../components/Placeholder.astro';
+
+const experience = [
+  { company: 'Company Name', role: 'Senior Product Designer', years: '2022 — Now' },
+  { company: 'Company Name', role: 'Product Designer', years: '2019 — 2022' },
+  { company: 'Agency Name', role: 'Interaction Designer', years: '2016 — 2019' },
+];
+
+const capabilities = ['Product strategy', 'Interaction design', 'Design systems', 'User research', 'Prototyping', 'Workshop facilitation'];
+---
+
+<Base title="About">
+  <header class="page-header container">
+    <h1>About</h1>
+  </header>
+
+  <section class="container about-grid page-body">
+    <Placeholder ratio="4 / 5" label="Portrait" />
+
+    <div class="stack">
+      <p class="lede">
+        Placeholder bio. I'm a senior product designer focused on turning complex systems into calm,
+        usable products.
+      </p>
+      <div class="measure">
+        <p>
+          Placeholder text. A few sentences about your background, how you work, and what you care about.
+          Mention the kinds of teams you thrive in and the problems you like to solve.
+        </p>
+        <p>
+          Placeholder text. Something personal — where you're based, what you do outside of work.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="eyebrow list-heading">Experience</h2>
+        <ul role="list" class="list-table">
+          {experience.map((item) => (
+            <li>
+              <span>{item.role}, {item.company}</span>
+              <span class="muted">{item.years}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="eyebrow list-heading">Capabilities</h2>
+        <ul role="list" class="list-table">
+          {capabilities.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

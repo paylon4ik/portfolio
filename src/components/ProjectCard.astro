@@ -1,0 +1,21 @@
+---
+import Placeholder from './Placeholder.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="project-card" href={`/work/${project.slug}`}>
+  <Placeholder ratio="4 / 3" label="Cover image" />
+  <div class="project-card-meta">
+    <div>
+      <h3>{project.title}</h3>
+      <p>{project.client}</p>
+    </div>
+    <span class="eyebrow">{project.year}</span>
+  </div>
+</a>
